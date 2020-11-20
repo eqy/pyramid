@@ -1,13 +1,14 @@
 class Solution {
 public:
     int findPivot(vector<int>& nums, int start, int end) {
-        if (end - start < 2) {
+        if (end - start < 16) {
+            std::cout << nums[end] << std::endl;
             for (int i = start; i < end; i++) {
                 if (nums[i] > nums[i+1]) {
                     return i + 1;
                 }
-                return start;
             }
+            return start;
         }
         int mid = ((end - start)/2) + start;
         if (nums[start] <= nums[mid] && nums[mid] <= nums[end]) {
@@ -55,7 +56,6 @@ public:
             return -1;
         }
         int pivot = findPivot(nums, 0, size - 1);
-        std::cout << pivot << std::endl;
         if (pivot == 0) {
             return _search(nums, 0, size - 1, target);
         }
