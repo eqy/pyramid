@@ -28,15 +28,16 @@ public:
                 digit_found = 1;
             } else {
                 int digit = str[i] - 48;
+                long long temp = (long long) res * 10 + digit;
+                long long temp2 = temp*sign;
                 if (digit >= 0 && digit <= 9) {
                     digit_found = 1;
-                    if (((long long) res * 10 + digit) * sign <= INT_MIN) {
+                    if (temp2 <= INT_MIN) {
                         return INT_MIN;
-                    } else if (((long long) res * 10 + digit) * sign >= INT_MAX)
-{
+                    } else if (temp2 >= INT_MAX) {
                         return INT_MAX;
                     } else {
-                        res = res*10 + digit;
+                        res = temp;
                     }
                 } else {
                     break;
